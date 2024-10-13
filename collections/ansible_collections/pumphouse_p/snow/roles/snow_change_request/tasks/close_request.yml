@@ -1,0 +1,26 @@
+---
+- name: Schedule change request
+  servicenow.itsm.change_request:
+    number: "{{ snow_change_request_num }}"
+    assignment_group: "Service Desk"
+    state: scheduled
+
+- name: Implement change request
+  servicenow.itsm.change_request:
+    number: "{{ snow_change_request_num }}"
+    assignment_group: "Service Desk"
+    state: implement
+
+- name: Review change request
+  servicenow.itsm.change_request:
+    number: "{{ snow_change_request_num }}"
+    assignment_group: "Service Desk"
+    state: review
+
+- name: Close change request
+  servicenow.itsm.change_request:
+    number: "{{ snow_change_request_num }}"
+    assignment_group: "Service Desk"
+    state: closed
+    close_code: "{{ snow_change_request_close_code }}"
+    close_notes: "{{ snow_change_request_close_notes }}"

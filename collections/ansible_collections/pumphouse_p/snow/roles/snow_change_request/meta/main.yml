@@ -1,0 +1,31 @@
+---
+galaxy_info:
+  author: Devin Parrish
+  role_name: snow_change_request
+  namespace: pumphouse_p.apps
+  description: An Ansible Role that manages change requests in ServiceNow
+
+  license: GPL
+
+  min_ansible_version: 2.9
+
+  galaxy_tags:
+    - servicenow
+    - change_request
+    - itsm
+
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+
+dependencies: []

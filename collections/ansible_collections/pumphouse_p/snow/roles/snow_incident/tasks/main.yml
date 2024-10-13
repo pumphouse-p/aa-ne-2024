@@ -1,0 +1,15 @@
+---
+- name: Create incident
+  ansible.builtin.include_tasks:
+    file: create_incident.yml
+  when: snow_incident_state == 'present'
+
+- name: Update incident
+  ansible.builtin.include_tasks:
+    file: update_incident.yml
+  when: snow_incident_state == 'updated'
+
+- name: Close incident
+  ansible.builtin.include_tasks:
+    file: close_incident.yml
+  when: snow_incident_state == 'closed'

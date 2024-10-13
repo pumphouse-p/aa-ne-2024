@@ -1,0 +1,7 @@
+---
+- name: Close incident
+  servicenow.itsm.incident:
+    state: closed
+    number: "{{ snow_incident_number }}"
+    close_code: "Solved (Permanently)"
+    close_notes: "Closed by Ansible Automation Platform."
