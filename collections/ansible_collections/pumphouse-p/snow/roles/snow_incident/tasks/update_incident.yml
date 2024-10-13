@@ -1,0 +1,5 @@
+---
+- name: Change state of incident
+  servicenow.itsm.incident:
+    state: in_progress
+    number: "{{ snow_incident_number }}"

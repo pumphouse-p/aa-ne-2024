@@ -1,0 +1,10 @@
+---
+- name: "Open change request"
+  ansible.builtin.include_tasks:
+    file: "open_request.yml"
+  when: snow_change_request_state == 'open'
+
+- name: "Close change request"
+  ansible.builtin.include_tasks:
+    file: "close_request.yml"
+  when: snow_change_request_state == 'close'

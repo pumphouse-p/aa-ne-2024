@@ -1,0 +1,12 @@
+---
+- name: Create incident item in ServiceNow
+  hosts: localhost
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: Run snow_incident role
+      ansible.builtin.include_role:
+        name: pumphouse_p.snow.snow_incident
+      vars:
+        snow_incident_state: present

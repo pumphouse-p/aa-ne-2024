@@ -1,0 +1,6 @@
+---
+snow_incident_caller: "{{ snow_incident_caller_choice | default('dparrish') }}"
+snow_incident_short_description: "{{ snow_incident_short_description_choice | default('Incident opened by AAP') }}"
+snow_incident_description: "{{ snow_incident_description_choice | default('Incident opened by Ansible Automation Platform.') }}"
+snow_incident_urgency: "{{ snow_incident_urgency_choice | default('medium') }}"
+snow_incident_impact: "{{ snow_incident_impact_choice | default('medium') }}"
