@@ -1,0 +1,42 @@
+---
+- name: Clone git repo {{ git_repo_url }}
+  hosts: localhost
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: Generate UUID
+      ansible.builtin.set_fact:
+        f_uuid: "{{ ansible_date_time.iso8601_micro | ansible.builtin.to_uuid }}"
+
+    - name: Display UUID
+      ansible.builtin.debug:
+        msg: Generated UUID is {{ f_uuid }}
+
+    - name: Retrieve repo contents
+      ansible.scm.git_retrieve:
+        origin:
+          url: "{{ repo_url }}"
+        upstream:
+          url: "{{ repo_upstream_url }}"
+        name: "ansible-automates-{{ f_uuid }}"
+      register: r_repo
+
+    - name: Create directory with new deployment
+      ansible.builtin.file:
+        state: directory
+        mode: '0755'
+        path: "{{ r_repo['path'] }}/{{ f_uuid }}"
+
+    # - name: Generate cloud environment configuration
+    #   ansible.builtin.template:
+
+    # - name: Generate terraform plan
+    #   cloud.terraform.terraform:
+    #     state: planned
+    #     plan_file: "{{ plan_file }}"
+
+    - name: Commit and push changes to origin
+      ansible.scm.git_publish:
+        path: "{{ r_repo['path'] }}"
+        message: "AAP Job ID {{ awx_job_id }}"

@@ -1,0 +1,19 @@
+---
+- name: Open change request in ServiceNow
+  hosts: localhost
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: Run snow_change_request role
+      ansible.builtin.include_role:
+        name: pumphouse_p.snow.snow_change_request
+      vars:
+        snow_change_request_category: "software"
+        snow_change_request_short_description: "{{ cr_short_description | default(short_description) }}"
+        snow_change_request_description: "{{ cr_long_description | default(long_description) }}"
+        snow_change_request_impact: "{{ cr_impact | default('medium') }}"
+        snow_change_request_priority: "{{ cr_priority | default('moderate') }}"
+        snow_change_request_risk: "{{ cr_risk | default('low') }}"
+        snow_change_request_type: "{{ cr_type | default('normal') }}"
+        snow_change_request_urgency: "{{ cr_urgency | default('high') }}"
