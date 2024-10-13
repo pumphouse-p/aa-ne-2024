@@ -21,6 +21,7 @@
           url: "{{ git_repo_upstream_url }}"
         branch:
           name: "ansible-automates-{{ f_uuid }}"
+        host_key_checking: accept-new
       register: r_repo
 
     - name: Create directory with new deployment
