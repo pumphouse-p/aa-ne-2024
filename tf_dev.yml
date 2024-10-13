@@ -13,6 +13,10 @@
       ansible.builtin.debug:
         msg: Generated UUID is {{ f_uuid }}
 
+    - name: Setup git with key file
+      ansible.builtin.shell:
+        cmd: git config core.sshCommand 'ssh -i {{ git_user_private_key }}'
+
     - name: Retrieve repo contents
       ansible.scm.git_retrieve:
         origin:
@@ -43,3 +47,7 @@
         path: "{{ r_repo['path'] }}"
         commit:
           message: "AAP Job ID {{ awx_job_id }}"
+        user:
+          email: "{{ git_repo_user_email }}"
+          name: '{{ git_repo_user_name }}'
+        token: "{{ git_repo_user_token }}"
