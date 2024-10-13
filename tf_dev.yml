@@ -2,7 +2,7 @@
 - name: Clone git repo {{ git_repo_url }}
   hosts: localhost
   become: false
-  gather_facts: false
+  gather_facts: true
 
   tasks:
     - name: Generate UUID
