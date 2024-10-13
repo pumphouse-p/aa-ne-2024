@@ -13,10 +13,6 @@
       ansible.builtin.debug:
         msg: Generated UUID is {{ f_uuid }}
 
-    - name: Setup git with key file
-      ansible.builtin.shell:
-        cmd: git config --global core.sshCommand 'ssh -i {{ git_user_private_key }}'
-
     - name: Retrieve repo contents
       ansible.scm.git_retrieve:
         origin:
@@ -27,6 +23,9 @@
           name: "ansible-automates-{{ f_uuid }}"
         host_key_checking: accept-new
       register: r_repo
+      environment:
+        GIT_SSH_COMMAND: "ssh -i {{ git_user_private_key }}"
+
 
     - name: Create directory with new deployment
       ansible.builtin.file:
