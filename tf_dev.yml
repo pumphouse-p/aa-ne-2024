@@ -19,7 +19,8 @@
           url: "{{ git_repo_url }}"
         upstream:
           url: "{{ git_repo_upstream_url }}"
-        branch: "ansible-automates-{{ f_uuid }}"
+        branch:
+          name: "ansible-automates-{{ f_uuid }}"
       register: r_repo
 
     - name: Create directory with new deployment
