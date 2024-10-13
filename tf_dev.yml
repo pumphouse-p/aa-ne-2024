@@ -41,4 +41,5 @@
     - name: Commit and push changes to origin
       ansible.scm.git_publish:
         path: "{{ r_repo['path'] }}"
-        message: "AAP Job ID {{ awx_job_id }}"
+        commit:
+          message: "AAP Job ID {{ awx_job_id }}"
