@@ -16,9 +16,9 @@
     - name: Retrieve repo contents
       ansible.scm.git_retrieve:
         origin:
-          url: "{{ repo_url }}"
+          url: "{{ git_repo_url }}"
         upstream:
-          url: "{{ repo_upstream_url }}"
+          url: "{{ git_repo_upstream_url }}"
         name: "ansible-automates-{{ f_uuid }}"
       register: r_repo
 
