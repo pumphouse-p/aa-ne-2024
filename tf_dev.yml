@@ -15,7 +15,7 @@
 
     - name: Setup git with key file
       ansible.builtin.shell:
-        cmd: git config core.sshCommand 'ssh -i {{ git_user_private_key }}'
+        cmd: git config --global core.sshCommand 'ssh -i {{ git_user_private_key }}'
 
     - name: Retrieve repo contents
       ansible.scm.git_retrieve:
