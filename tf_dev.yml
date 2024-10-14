@@ -22,7 +22,6 @@
         branch:
           name: "ansible-automates-{{ f_uuid }}"
         host_key_checking: accept-new
-        key_file: "{{ git_user_private_key }}"
       register: r_repo
 
     - name: Create directory with new deployment
