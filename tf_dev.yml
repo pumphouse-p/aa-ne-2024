@@ -20,7 +20,7 @@
         upstream:
           url: "{{ git_repo_upstream_url }}"
         branch:
-          name: "{{ git_repo_branch_name | default('main') }}"
+          name: "ansible-automates-{{ f_uuid }}"
         host_key_checking: accept-new
       register: r_repo
 
