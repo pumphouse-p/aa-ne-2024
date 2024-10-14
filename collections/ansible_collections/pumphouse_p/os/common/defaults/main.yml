@@ -1,0 +1,15 @@
+---
+# List of common packages for RHEL-based systems
+common_rhel_packages:
+  - "vim"
+  - "git"
+  - "tmux"
+  - "@container-management"
+
+# List of common packages for Windows-based systems
+common_win_packages:
+  - "vim"
+  - "git"
+  - "atom"
+  - "vscode"
+  - "vscode-ansible"

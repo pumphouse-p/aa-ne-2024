@@ -1,0 +1,5 @@
+---
+- name: '[WINDOWS] Install desired packages'
+  chocolatey.chocolatey.win_chocolatey:
+    name: "{{ common_win_packages }}"
+    state: present

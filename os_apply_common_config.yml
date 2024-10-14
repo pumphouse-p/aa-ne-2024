@@ -1,0 +1,10 @@
+---
+- name: Apply common configuration to systems
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Apply common role
+      ansible.builtin.include_role:
+        name: pumphouse_p.os.common

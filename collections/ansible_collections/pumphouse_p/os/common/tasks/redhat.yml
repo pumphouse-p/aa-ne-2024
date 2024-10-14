@@ -1,0 +1,5 @@
+---
+- name: '[REDHAT] Install desired packages'
+  ansible.builtin.package:
+    name: "{{ common_rhel_packages }}"
+    state: present

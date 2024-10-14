@@ -1,0 +1,10 @@
+---
+- name: Apply common Linux configuration
+  ansible.builtin.include_tasks:
+    file: redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- name: Apply common Windows configuration
+  ansible.builtin.include_tasks:
+    file: windows.yml
+  when: ansible_os_family == 'Windows'
