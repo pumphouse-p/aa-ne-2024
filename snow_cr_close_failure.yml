@@ -1,0 +1,14 @@
+---
+- name: "Close change request as a failure"
+  hosts: localhost
+  become: false
+  vars:
+    snow_change_request_state: "close"
+
+  roles:
+    - name: pumphouse_p.snow.snow_change_request
+      vars:
+        snow_change_request_close_code: "unsuccessful"
+        snow_change_request_close_notes: >
+          Change request "{{ snow_change_request_num }}" was unsuccessfully implemented
+          via Ansible Automation Platform.
