@@ -9,5 +9,4 @@
       cloud.terraform.terraform:
         project_path: ./aws/
         state: absent
-        force_init: true
 
