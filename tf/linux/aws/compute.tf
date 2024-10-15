@@ -43,12 +43,12 @@ resource "aws_instance" "multicloud_demo" {
     created_by   = "ansible"
   }
 
-  user_data = <<EOF
-#!/bin/bash
-echo "Calling back to Ansible Automation Platform for post-provisioning setup."
-curl -k -f -i -H 'Content-Type:application/json' -XPOST -d '{"host_config_key": "Muzzle-Moustache6-Blooper"}' https://controller.apps.ocp.prod.devinforyou.com/api/v2/job_templates/136/callback/
-EOF
-}
+#   user_data = <<EOF
+# #!/bin/bash
+# echo "Calling back to Ansible Automation Platform for post-provisioning setup."
+# curl -k -f -i -H 'Content-Type:application/json' -XPOST -d '{"host_config_key": "my-key"}' https://controller.example.com/api/v2/job_templates/136/callback/
+# EOF
+# }
 
 resource "aws_ebs_volume" "multicloud_demo" {
   count             = var.instance_count

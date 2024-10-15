@@ -10,7 +10,3 @@
         project_path: "./aws/"
         state: absent
         force_init: true
-        backend_config:
-          region: us-east-2
-          bucket: deparris-tfstate
-          key: multi-cloud/aws.tfstate
