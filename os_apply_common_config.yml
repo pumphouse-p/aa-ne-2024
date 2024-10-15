@@ -4,7 +4,5 @@
   become: true
   gather_facts: true
 
-  tasks:
-    - name: Apply common role
-      ansible.builtin.include_role:
-        name: pumphouse_p.os.common
+  roles:
+    - name: pumphouse_p.os.common
