@@ -1,0 +1,16 @@
+---
+- name: Ensure windows machines are absent
+  hosts: localhost
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: Ensure windows systems are absent
+      cloud.terraform.terraform:
+        project_path: ./aws/
+        state: absent
+        force_init: true
+        backend_config:
+          region: us-east-2
+          bucket: deparris-tfstate
+          key: windows/aws.tfstate

@@ -1,0 +1,12 @@
+---
+- name: Ensure Windows infrastructure is present
+  hosts: localhost
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: Ensure windows systems are present
+      cloud.terraform.terraform:
+        project_path: ./aws/
+        state: present
+        force_init: true

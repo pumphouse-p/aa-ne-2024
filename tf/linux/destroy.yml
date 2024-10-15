@@ -1,0 +1,16 @@
+---
+- name: Ensure infrastructure is not present
+  hosts: localhost
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: Ensure infrastructure is not present
+      cloud.terraform.terraform:
+        project_path: "./aws/"
+        state: absent
+        force_init: true
+        backend_config:
+          region: us-east-2
+          bucket: deparris-tfstate
+          key: multi-cloud/aws.tfstate
