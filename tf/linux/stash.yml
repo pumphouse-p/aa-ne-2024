@@ -19,7 +19,7 @@
 
     - name: Stash to variable
       ansible.builtin.include_role:
-        name: cloud.terraform_ops.plan_stash
+        name: redhat_cop.terraform_ops.plan_stash
       vars:
         plan_stash_operation: stash
         plan_stash_var_name: stashed_plan
