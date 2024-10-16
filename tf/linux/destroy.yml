@@ -10,7 +10,9 @@
         project_path: "./aws/"
         state: absent
         force_init: true
-        backend_config:
-          region: us-east-2
-          bucket: deparris-tfstate
-          key: ansible-automates/linux.tfstate
+        backend_config_files:
+          - "{{ lookup('ansible.builtin.env', 'TF_BACKEND_CONFIG_FILE') }}"
+        # Credential contents:
+        # bucket = "my-terraform-state-bucket"
+        # key = "path/to/terraform-state-file"
+        # region = "us-east-1"
