@@ -1,0 +1,21 @@
+---
+- name: Load stashed plan and apply
+  hosts: localhost
+  gather_facts: false
+  become: false
+
+  tasks:
+    - name: Load the stashed plan
+      ansible.builtin.include_role:
+        name: cloud.terraform_ops.plan_stash
+      vars:
+        plan_stash_operation: load
+        plan_stash_var_name: stashed_plan
+        plan_stash_plan_file_path: linux-plan.out
+
+    - name: Apply the plan
+      cloud.terraform.terraform:
+        project_path: ./aws
+        plan_file: linux-plan.out
+        force_init: true
+        state: present

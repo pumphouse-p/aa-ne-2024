@@ -1,0 +1,22 @@
+---
+- name: Stash Terraform plan
+  hosts: localhost
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: Generate terraform plan file
+      cloud.terraform.terraform:
+        project_path: ./aws
+        force_init: true
+        plan_file: linux-plan.out
+        state: present
+      check_mode: true
+
+    - name: Stash to variable
+      ansible.builtin.include_role:
+        name: cloud.terraform_ops.plan_stash
+      vars:
+        plan_stash_operation: stash
+        plan_stash_var_name: stashed_plan
+        plan_stash_plan_file_path: linux-plan.out
