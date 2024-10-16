@@ -11,6 +11,10 @@
         force_init: true
         plan_file: linux-plan.out
         state: present
+        backend_config:
+          region: us-east-2
+          bucket: deparris-tfstate
+          key: ansible-automates/linux.tfstate
       check_mode: true
 
     - name: Stash to variable
